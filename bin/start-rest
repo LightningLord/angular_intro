@@ -1,0 +1,26 @@
+#!/bin/bash
+
+ORIGINAL_PATH=$PATH
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd)
+REST_DIR=${DIR%/*}
+PATH=$DIR:$REST_DIR/node_modules/.bin:$PATH
+
+# Check permissions on node? 
+if [ ! -e $NODE_EXE ]; then
+	echo "$NODE_EXE could not be found"
+	exit
+fi
+
+if [ ! -x $NODE_EXE ]; then
+	echo "$NODE_EXE does not have executable permission"
+	exit
+fi
+
+mongod_start=$(ps -aef | grep mongod | grep -v grep | wc -l | xargs echo -n)
+
+if ! [ "$mongod_start" == 1 ] ; then
+  echo "Please start the mongod server and try again."
+  exit
+fi
+
+$NODE_EXE $REST_DIR/bin/app/rest-server.js &> $REST_DIR/bin/app/logs/rest.log &

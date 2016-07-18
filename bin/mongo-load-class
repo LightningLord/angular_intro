@@ -1,0 +1,25 @@
+#!/bin/bash
+ORIGINAL_PATH=$PATH
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd)
+REST_DIR=${DIR%/*}
+PATH=$DIR:$REST_DIR/node_modules/.bin:$PATH
+MONGOIMPORT_EXE=$ANGULAR_HOME/bin/mongo/mac/mongoimport
+
+$MONGOIMPORT_EXE -v  --db class --collection top250 --file $REST_DIR/data/imdbTop250.json --jsonArray --drop
+
+$MONGOIMPORT_EXE -v  --db class --collection states --file $REST_DIR/data/states.json --jsonArray --drop
+$MONGOIMPORT_EXE -v  --db class --collection stateNames --file $REST_DIR/data/state-names.json --jsonArray --drop
+
+$MONGOIMPORT_EXE -v  --db class --collection categories --drop --file $REST_DIR/data/northwind/northwind-categories.json --jsonArray
+$MONGOIMPORT_EXE -v  --db class --collection customers --drop --file $REST_DIR/data/northwind/northwind-customers.json --jsonArray
+$MONGOIMPORT_EXE -v  --db class --collection employees --drop --file $REST_DIR/data/northwind/northwind-employees.json --jsonArray
+$MONGOIMPORT_EXE -v  --db class --collection order_details --drop --file $REST_DIR/data/northwind/northwind-order-details.json --jsonArray
+$MONGOIMPORT_EXE -v  --db class --collection orders --drop --file $REST_DIR/data/northwind/northwind-orders.json --jsonArray
+$MONGOIMPORT_EXE -v  --db class --collection products --drop --file $REST_DIR/data/northwind/northwind-products.json --jsonArray
+$MONGOIMPORT_EXE -v  --db class --collection regions --drop --file $REST_DIR/data/northwind/northwind-regions.json --jsonArray
+$MONGOIMPORT_EXE -v  --db class --collection shippers --drop --file $REST_DIR/data/northwind/northwind-shippers.json --jsonArray
+$MONGOIMPORT_EXE -v  --db class --collection suppliers --drop --file $REST_DIR/data/northwind/northwind-suppliers.json --jsonArray
+$MONGOIMPORT_EXE -v  --db class --collection territories --drop --file $REST_DIR/data/northwind/northwind-territories.json --jsonArray
+$MONGOIMPORT_EXE -v  --db class --collection usstates --drop --file $REST_DIR/data/northwind/northwind-usstates.json --jsonArray
+
+cd $OLDDIR

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app="highlightApp">
+<head>
+  <title>Highlighting matches</title>
+  <script src="/common/js/angular/angular.js"></script>
+  <script src="highlight-match.js"></script>
+
+  <style>
+    .highlight {
+      background-color: #ffff00;
+    }
+
+    .line {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body ng-controller="HighlightCtrl">
+<p>Here are some names:</p>
+<ul>
+  <!-- ngClass takes an argument of a class to apply and conditions under
+       which to apply the class. When nameFound returns truthy, highlight is applied -->
+  <li ng-repeat="person in people">
+    <!-- As a function -->
+    <!--<span ng-class="{'highlight' : checkFound(person.name, fName)}">{{personName}}</span>-->
+
+    <!-- As an in-line -->
+    <!--<span ng-class="{'highlight' : fName && person.name.toUpperCase().indexOf(fName.toUpperCase()) > -1}">{{personName}}</span>-->
+
+    <!-- As a function returning the class -->
+    <span ng-class="getClass(person.name, fName)">{{person.name}}</span>
+  </li>
+</ul>
+<form>
+  <label for="fName">Highlight matching names: </label>
+  <input id="fName" type="text" ng-model="fName"/><br/>
+
+</form>
+</body>
+</html>

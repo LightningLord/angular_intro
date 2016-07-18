@@ -1,0 +1,12 @@
+#!/bin/bash
+
+ORIGINAL_PATH=$PATH
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd)
+export ANGULAR_HOME=${DIR%/*}
+PATH=$DIR:$ANGULAR_HOME/node_modules/.bin:$ANGULAR_HOME/bin/node/mac/bin:$ANGULAR_HOME/bin/mongo/mac:$PATH
+export NODE_EXE=$ANGULAR_HOME/bin/node/mac/bin/node
+export MONGOD_EXE=$ANGULAR_HOME/bin/mongo/mac/mongod
+
+chmod u+x $ANGULAR_HOME/bin/* $ANGULAR_HOME/bin/app/*.js
+chmod u+x $ANGULAR_HOME/node_modules/protractor/selenium/*
+chmod u+x $ANGULAR_HOME/node_modules/.bin/* $ANGULAR_HOME/bin/node/mac/bin/* $ANGULAR_HOME/bin/mongo/mac/*

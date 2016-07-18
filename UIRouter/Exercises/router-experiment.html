@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html ng-app="routerExperiment">
+<head>
+  <meta charset="UTF-8">
+  <title>Router experiments</title>
+  <script src="/common/js/angular/angular.js"></script>
+  <script src="/common/js/angular-ui-router/angular-ui-router.js"></script>
+  <script src="router-experiment.js"></script>
+  <style>
+    .route-display {
+      background-color: yellow
+    }
+
+    .route-container {
+      position:absolute;
+      top:100px
+    }
+  </style>
+</head>
+<body>
+<div ng-controller="MainCtrl">
+
+  <p class="route-container">The UI router says: <span class="route-display" ui-view></span></p>
+</div>
+
+<div>
+  <ul>
+    <li><a ui-sref="initial">Greeting</a></li>
+    <li><a ui-sref="departure">Valediction</a></li>
+  </ul>
+</div>
+
+</body>
+</html>
