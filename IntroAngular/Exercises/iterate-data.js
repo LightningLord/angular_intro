@@ -11,4 +11,10 @@
 var teams = ['Mets', 'Yankees', 'Red Sox', 'Phillies', 'Blue Jays',
   'Braves', 'Orioles', 'Marlins', 'Rays', 'Nationals'];
 
+(function(angular) {
+  var mod = angular.module( 'iterApp', [] );
+  mod.controller( 'MainCtrl', function ( $scope ) {
+    $scope.teams = teams;
 
+  } )
+})(angular);
