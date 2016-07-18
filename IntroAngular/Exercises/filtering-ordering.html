@@ -29,7 +29,7 @@
           <label class="col-sm-3 control-label" for="city">City:</label>
           <div class="col-sm-7">
             <input id="city" name="city"
-                   class="form-control" type="text"/>
+                   class="form-control" type="text" ng-model="filterTeam.city"/>
           </div>
         </div>
 
@@ -37,7 +37,7 @@
           <label class="col-sm-3 control-label" for="team">Team: </label>
           <div class="col-sm-7">
             <input id="team" name="team"
-                   class="form-control" type="text"/>
+                   class="form-control" type="text" ng-model="filterTeam.team"/>
           </div>
         </div>
 
@@ -45,7 +45,7 @@
           <label class="col-sm-3 control-label" for="rank">Rank: </label>
           <div class="col-sm-7">
             <input id="rank" name="rank"
-                   class="form-control" type="text"/>
+                   class="form-control" type="text" ng-model="filterTeam.rank"/>
           </div>
         </div>
 
@@ -53,7 +53,7 @@
           <label class="col-sm-3 control-label" for="won">Won: </label>
           <div class="col-sm-7">
             <input id="won" name="won"
-                   class="form-control" type="text"/>
+                   class="form-control" type="text" ng-model="filterTeam.won"/>
           </div>
         </div>
 
@@ -61,7 +61,7 @@
           <label class="col-sm-3 control-label" for="lost">Lost: </label>
           <div class="col-sm-7">
             <input id="lost" name="lost"
-                   class="form-control" type="text"/>
+                   class="form-control" type="text" ng-model="filterTeam.lost"/>
           </div>
         </div>
 
@@ -69,7 +69,7 @@
           <label class="col-sm-3 control-label" for="win_percentage">Win Pct: </label>
           <div class="col-sm-7">
             <input id="win_percentage" name="win_percentage"
-                   class="form-control" type="text"/>
+                   class="form-control" type="text" ng-model="filerTeam.win_percentage"/>
           </div>
         </div>
       </form>
@@ -83,37 +83,37 @@
 
       <div class="radio">
         <label>
-          <input type="radio" name="orderOpt" id="orderOpt-city" />
+          <input type="radio" name="orderOpt" id="orderOpt-city" ng-model="orderField" value="city"/>
           City
         </label>
       </div>
       <div class="radio">
         <label>
-          <input type="radio" name="orderOpt" id="orderOpt-team" />
+          <input type="radio" name="orderOpt" id="orderOpt-team" ng-model="orderField" value="team" />
           Team
         </label>
       </div>
       <div class="radio">
         <label>
-          <input type="radio" name="orderOpt" id="orderOpt-rank" />
+          <input type="radio" name="orderOpt" id="orderOpt-rank" ng-model="orderField" value="rank"/>
           Rank
         </label>
       </div>
       <div class="radio">
         <label>
-          <input type="radio" name="orderOpt" id="orderOpt-won" />
+          <input type="radio" name="orderOpt" id="orderOpt-won" ng-model="orderField" value="won" />
           Won
         </label>
       </div>
       <div class="radio">
         <label>
-          <input type="radio" name="orderOpt" id="orderOpt-lost" />
+          <input type="radio" name="orderOpt" id="orderOpt-lost" ng-model="orderField" value="lost"/>
           Lost
         </label>
       </div>
       <div class="radio">
         <label>
-          <input type="radio" name="orderOpt" id="orderOpt-win_percentage" />
+          <input type="radio" name="orderOpt" id="orderOpt-win_percentage" ng-model="orderField" value="win_percentage" />
           Win Pct
         </label>
       </div>
@@ -136,7 +136,7 @@
     <tbody>
 
     <!-- Add a filter Filter and an orderBy Filter, using the ng-models above -->
-    <tr ng-repeat="team in teams">
+    <tr ng-repeat="team in teams | filter:filterTeam | orderBy:orderField">
       <td>{{ team.city }}</td>
       <td>{{ team.team }}</td>
       <td>{{ team.rank }}</td>
