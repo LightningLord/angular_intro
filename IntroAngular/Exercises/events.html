@@ -33,8 +33,7 @@
         content: Add a new team
         classes: control-label col-sm-2
         -->
-
-
+        <label for="newTeam" class="control-label col-sm-2">Add a New Team</label>
         <div class="col-sm-2">
           <!-- Add a text input field
           ng-model: newTeam
@@ -42,12 +41,12 @@
           type: text
           class: form-control
           -->
-
+          <input type="text" ng-model="newTeam" id="newTeam" class="form-control">
         </div>
         <!-- Add a button to click on to add the new team
         The button should have classes "btn" and "btn-small"
         -->
-
+        <button class="btn btn-small" ng-click="addTeam(newTeam)">Add</button>
       </div>
 
       <div class="form-group">
@@ -62,12 +61,12 @@
            Don't forget the ng-model
            And the id should be "dropTeam" and the class should be "form-control"
            -->
-
+           <select ng-model="dropTeam" id="dropTeam" class="form-control" ng-options="team for team in teams"></select>
         </div>
         <!-- Add a button to click on to remove the selected team
         The button should have classes "btn" and "btn-small"
         -->
-
+        <button class="btn btn-small" ng-click="removeTeam(dropTeam)">Remove</button>
       </div>
 
       <div class="form-group">
@@ -75,7 +74,7 @@
           <!-- Challenge: restore the dropped teams, set the button here
            Add the usual classes to the button
            -->
-
+           <button class="btn btn-small" ng-click="restoreTeams()">Restore Dropped Teams</button>
         </div>
       </div>
     </form>
