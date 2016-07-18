@@ -33,6 +33,7 @@
 
     $scope.restoreTeams = function(){
       $scope.teams = $scope.teams.concat($scope.dropped)
+      $scope.dropped = []
     }
     // Challenge: Restore the dropped teams
 
