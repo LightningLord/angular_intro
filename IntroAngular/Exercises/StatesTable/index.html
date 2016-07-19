@@ -55,8 +55,18 @@
     </tr>
     </thead>
     <tbody>
-
-    <tr ng-repeat="state in states | orderBy:orderField">
+    <tr>
+      <th><input type="text" ng-model="filterState.name" placeholder="Filter Names"></th>
+      <th><input type="text" ng-model="filterState.abbreviation" placeholder="Filter Abbreviations"></th>
+      <th><input type="text" ng-model="filterState.capital" placeholder="Filter Capitals"></th>
+      <th><input type="text" ng-model="filterState.mostPopulousCity" placeholder="Filter Most Populous Cities"></th>
+      <th><input type="text" ng-model="filterState.population" placeholder="Filter Populations"></th>
+      <th><input type="text" ng-model="filterState.squareMiles" placeholder="Filter Square Miles"></th>
+      <th><input type="text" ng-model="filterState.timeZone1" placeholder="Filter Time Zone 1"></th>
+      <th><input type="text" ng-model="filterState.timeZone2" placeholder="Filter Time Zone 2"></th>
+      <th><input type="text" ng-model="filterState.dst" placeholder="Filter DST"></th>
+    </tr>
+    <tr ng-repeat="state in states | filter:filterState | orderBy:orderField">
       <td>{{ state.name }}</td>
       <td>{{ state.abbreviation }}</td>
       <td>{{ state.capital }}</td>
