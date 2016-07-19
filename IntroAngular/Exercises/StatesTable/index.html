@@ -67,15 +67,15 @@
       <th><input type="text" ng-model="filterState.dst" placeholder="Filter DST"></th>
     </tr>
     <tr ng-repeat="state in states | filter:filterState | orderBy:orderField">
-      <td>{{ state.name }}</td>
-      <td>{{ state.abbreviation }}</td>
-      <td>{{ state.capital }}</td>
-      <td>{{ state.mostPopulousCity }}</td>
-      <td>{{ state.population }}</td>
-      <td>{{ state.squareMiles }}</td>
-      <td>{{ state.timeZone1 }}</td>
-      <td>{{ state.timeZone2 }}</td>
-      <td>{{ state.dst }}</td>
+      <td ng-class="getClass('name')">{{ state.name }}</td>
+      <td ng-class="getClass('abbreviation')">{{ state.abbreviation }}</td>
+      <td ng-class="getClass('capital')">{{ state.capital }}</td>
+      <td ng-class="getClass('mostPopulousCity')">{{ state.mostPopulousCity }}</td>
+      <td ng-class="getClass('population')">{{ state.population }}</td>
+      <td ng-class="getClass('squareMiles')">{{ state.squareMiles }}</td>
+      <td ng-class="getClass('timeZone1')">{{ state.timeZone1 }}</td>
+      <td ng-class="getClass('timeZone2')">{{ state.timeZone2 }}</td>
+      <td ng-class="getClass('dst')">{{ state.dst }}</td>
 
     </tr>
     </tbody>

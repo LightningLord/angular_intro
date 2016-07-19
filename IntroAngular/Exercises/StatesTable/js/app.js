@@ -21,8 +21,23 @@
         console.log(response)
       })
       $scope.orderBy = function(column){
-        $scope.orderField = column;
-        console.log(column)
+        if ($scope.orderField == column){
+          $scope.orderField = '-' + column
+        } else {
+          $scope.orderField = column;
+        }
+      }
+      $scope.getClass = function(column){
+        if ($scope.filterState){
+          var keys = Object.keys($scope.filterState)
+          console.log(keys.indexOf(column))
+          console.log(column)
+          if (keys.indexOf(column) > -1){
+            console.log('returning highlight')
+            return 'highlight'
+          }
+
+        }
       }
     }
     ])
