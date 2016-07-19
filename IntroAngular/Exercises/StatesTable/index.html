@@ -40,7 +40,35 @@
        here in the view.
   -->
   <table class="table">
+    <thead>
 
+    <tr>
+      <th>Name</th>
+      <th>Abbreviation</th>
+      <th>Capital</th>
+      <th>Most Populous City</th>
+      <th>Population</th>
+      <th>Square Miles</th>
+      <th>Time Zone 1</th>
+      <th>Time Zone 2</th>
+      <th>DST</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr ng-repeat="state in states ">
+      <td>{{ state.name }}</td>
+      <td>{{ state.abbreviation }}</td>
+      <td>{{ state.capital }}</td>
+      <td>{{ state.mostPopulousCity }}</td>
+      <td>{{ state.population }}</td>
+      <td>{{ state.squareMiles }}</td>
+      <td>{{ state.timeZone1 }}</td>
+      <td>{{ state.timeZone2 }}</td>
+      <td>{{ state.dst }}</td>
+
+    </tr>
+    </tbody>
   </table>
 </div>
 </body>

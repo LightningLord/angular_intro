@@ -9,4 +9,18 @@
    * Make it available to the view by publishing/copying it to $scope.states
    */
 
+   var statesApp = angular.module('statesApp', []);
+
+   statesApp.controller('StateCtrl', ['$scope', '$http',
+    function($scope, $http) {
+      $http({
+        url : '/data/states.json',
+        method: 'get'
+      }).then(function(response){
+        $scope.states = response.data;
+        console.log(response)
+      })
+    }
+    ])
+
 })( angular );
