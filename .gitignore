@@ -1,1 +1,2 @@
-bin/app/logs/http.log
+bin/app/logs
+data/mongo-start.log
