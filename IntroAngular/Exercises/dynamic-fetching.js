@@ -1,7 +1,7 @@
 (function(angular) {
   var mod = angular.module( 'teamApp', [] );
   // Add a dependency on $http to the TeamCtrl controller
-  mod.controller( 'TeamCtrl', function ( $scope ) {
+  mod.controller( 'TeamCtrl', function ( $scope, $http ) {
 
     /*
      * Make a call to $http, using the 'get' method and setting the url
@@ -12,7 +12,17 @@
      * as $scope.teams
      */
 
-
+      $http({
+        url: '../../data/baseball-standings.json',
+        method: 'get'
+      }).then(function(response){
+        console.log(response)
+        $scope.teams = []
+        for(var i = 0; i < response.data.length; i++){
+          console.log(response.data[i].team)
+          $scope.teams.push(response.data[i].team)
+        }
+      })
     var droppedTeams = [];
     $scope.addTeam = function(newTeam) {
       if (newTeam && $scope.teams.indexOf(newTeam) === -1) {
