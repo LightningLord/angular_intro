@@ -5,9 +5,13 @@
 // Fill in the details on ProductDetailCtrl, making sure to include $routeParams
 // as a dependency and to use it to indicate what the requested product id was
 
-  /*
-   prodControllers.controller( 'ProductDetailCtrl',  );
-   */
+
+   prodControllers.controller( 'ProductDetailCtrl',  ['$scope', '$routeParams', '$log',
+    function($scope, $routeParams, $log){
+      $scope.productID = $routeParams.productID;
+    }
+    ]);
+
 
   prodControllers.controller( 'ProductCtrl', ['$scope', '$log',
     function ( $scope, $log ) {
