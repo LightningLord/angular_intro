@@ -43,20 +43,20 @@
     <thead>
 
     <tr>
-      <th>Name</th>
-      <th>Abbreviation</th>
-      <th>Capital</th>
-      <th>Most Populous City</th>
-      <th>Population</th>
-      <th>Square Miles</th>
-      <th>Time Zone 1</th>
-      <th>Time Zone 2</th>
-      <th>DST</th>
+      <th ng-click="orderBy('name')">Name</th>
+      <th ng-click="orderBy('abbreviation')">Abbreviation</th>
+      <th ng-click="orderBy('capital')">Capital</th>
+      <th ng-click="orderBy('mostPopulousCity')">Most Populous City</th>
+      <th ng-click="orderBy('population')">Population</th>
+      <th ng-click="orderBy('squareMiles')">Square Miles</th>
+      <th ng-click="orderBy('timeZone1')">Time Zone 1</th>
+      <th ng-click="orderBy('timeZone2')">Time Zone 2</th>
+      <th ng-click="orderBy('state')">DST</th>
     </tr>
     </thead>
     <tbody>
 
-    <tr ng-repeat="state in states ">
+    <tr ng-repeat="state in states | orderBy:orderField">
       <td>{{ state.name }}</td>
       <td>{{ state.abbreviation }}</td>
       <td>{{ state.capital }}</td>

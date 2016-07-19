@@ -20,6 +20,10 @@
         $scope.states = response.data;
         console.log(response)
       })
+      $scope.orderBy = function(column){
+        $scope.orderField = column;
+        console.log(column)
+      }
     }
     ])
 
