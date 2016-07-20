@@ -16,5 +16,13 @@
    *
    * Restrict it to being an element
    */
-
+  mod.directive('productBanner', function(){
+    return {
+      template: '<div class="col-sm-12 text-center"><h2>Browse Our Products</h2></div>',
+      restrict: 'E'
+    }
+  })
 })(angular);
+
+
+
