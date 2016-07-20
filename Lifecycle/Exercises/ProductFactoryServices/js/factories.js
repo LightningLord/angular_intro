@@ -12,7 +12,9 @@
      *   records, an empty array
      *   recordsByID, an empty object
      */
-
+    var dao = {}
+    dao.records = []
+    dao.recordsByID = {}
     dao.refresh = function () {
       dao.records.splice( 0, dao.records.length );
       var dataIds = [];
@@ -27,7 +29,11 @@
            * And adding a key-value pair to dao.recordsByID such that
            * dao.recordsByID[5] returns a full object with the ID 5
            */
-
+          for (var i = 0; i < data.length; i++){
+            var elt = data[i];
+            dao.records.push(elt);
+            dao.recordsByID[elt[idField]] = elt
+          }
         } );
     };
 
@@ -53,7 +59,9 @@
      * Build a function that is dao.getThings (where Things is the title
      * cased plural value). It should return dao.records.
      */
-
+    dao['get' + titleCase( plural )] = function () {
+      return dao.records;
+    };
 
     return dao;
   }
@@ -90,6 +98,16 @@
    * overrides
    * though don't forget to call dao.refresh() before you return the dao
    */
+  mod.factory('categoryDAO', function($http){
+    var dao = getBaseDAO('category', 'categories', 'categoryID', $http)
+    dao.refresh()
+    return dao
+  })
 
+  mod.factory('supplierDAO', function($http){
+    var dao = getBaseDAO('supplier', 'suppliers', 'supplierID', $http)
+    dao.refresh()
+    return dao
+  })
 
 })( angular );

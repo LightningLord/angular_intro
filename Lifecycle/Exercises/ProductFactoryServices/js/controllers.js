@@ -55,7 +55,7 @@
         $log.log( 'Incoming parameters: ', params );
 
         // You will need an appropriate call to productDAO here!
-        $scope.products = null;
+        $scope.products = productDAO.getProducts(params);
 
         $scope.clickProduct = function ( p ) {
           $location.path( '/products/detail/' + p.productID );
@@ -72,7 +72,7 @@
     ['$scope', '$routeParams', 'productDAO', '$log',
       function ( $scope, $routeParams, productDAO, $log ) {
         // You will need an appropriate call to productDAO here!
-        $scope.product = null;
+        $scope.product = productDAO.getProduct(Number($routeParams.productID));
       }] );
 })( angular );
 
